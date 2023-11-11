@@ -1,0 +1,76 @@
+header {
+    background-color: black;
+}
+
+hr {
+    border: 2px solid #a42320;
+    margin-left: 0px;
+}
+
+.cabeca {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 35px 20px 35px;
+}
+
+.imagem-centro {
+    display: block;
+    margin: 0 auto;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+
+p {
+    color: white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin: 0;
+    font-size: 65px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 75px 100px 20px 35px;
+}
+
+#aviso {
+
+    text-align: center;
+    font-size: 35px;
+    margin-top: 20px;
+
+}
+
+.favorite-button {
+    background-color: white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: black;
+    padding: 10px 20px;
+    border: 5px outset;
+    border-color: #a42320;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.heart-icon::before {
+    content: "\2665";
+    margin-right: 5px;
+    color: #8a1e1c;
+    font-size: 24px;
+}
+
+.favorite-button:hover .heart-icon::before {
+    color: #000000;
+}
+
+.favorite-button:hover {
+    background-color: #a42320;
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="icon" href="img/pipoca.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReviewFlix</title>
+</head>
+<body>
+    <header>
+        <div class="cabeca">    
+            <img src="img/logo.png" alt="logo do site" width="300" class="imagem-centro">        
+        </div>        
+        <hr>
+    </header> 
+    <img src="img/imagem_background_login.jpeg" class="background-image"> 
+
+    <div class="login">
+        <div class="panel-login">
+            <img src="img/imagem_login.jpeg" class="imagem-login"><br><br>
+
+            <div class="form">
+                <label class="menu-login">Login:</label><br>
+                <input type="text" class="input-login" id="usuario"><br><br>
+    
+                <label class="menu-login">Senha:</label><br>
+                <input type="password" class="input-login" id="senha">
+                <img src="img/versenha.png" style="width: 20px;" id="img_senha" onclick="versenha('senha-login')"><br>
+                <img src="" alt="">
+                <button type="button" onclick="verificarsenha()" class="confirmar-login">Login</button>
+                <button type="button" onclick="cadastrarusuario('abrir_tela')" class="confirmar-login">Cadastrar</button>
+            </div>
+        </div>
+        <p id="resposta-senha" class="resposta-senha"></p>
+    </div>
+
+    <div class="tela_cadastro">
+        <div class="panel-login">
+            <div class="form"> <br>
+                <label class="menu-login">Usuario:</label> <br>
+                <input type="text" class="input-login" id="usuario1"> <br><br>
+    
+                <label class="menu-login">Senha:</label> <br>
+                <input type="password" class="input-login" id="senha1">
+                <img src="img/versenha.png" style="width: 20px;" id="img_senha1" onclick="versenha('senha-cadastro1')"><br> <br>
+    
+                <label class="menu-login">Repita a Senha:</label> <br>
+                <input type="password" class="input-login" id="senha2">
+                <img src="img/versenha.png" style="width: 20px;" id="img_senha2" onclick="versenha('senha-cadastro2')"><br> <br>
+
+                
+
+                <button type="button" onclick="cadastrarusuario('confirmar_login')" class="confirmar-login cadastro">Cadastrar</button>
+                <button type="button" onclick="cadastrarusuario('fechar_tela')" class="confirmar-login">Cancelar</button>
+                
+            </div>
+            
+        </div>
+    </div>
+    <p id="resultado_cadastro" class="resposta-senha"></p>
+   
+
+    <script src="js/funcoes.js"></script>
+</body>
+</html>
