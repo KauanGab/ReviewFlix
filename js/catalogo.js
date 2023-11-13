@@ -21,7 +21,7 @@ function getMovies(url) {
             main.innerHTML = `<div class="no-result">
             <img src="img/filmes/pililiu.png" alt="image" class="img-no-results">
             <br>
-            <h1 class="no-results">Nenhum resultado encontrada!</h1>
+            <h1 class="no-results">Nenhum resultado encontrado!</h1>
             </div>`
         }
 
@@ -50,14 +50,59 @@ function showMovies(data) {
                 ${overview}
                 <br> 
                 <small>Data de lançamento: ${release_date}</small>
+                <br/>
+                <button class="know-more" id=${id}>Ver trailer</button>
             </div>
         
         `
 
         main.appendChild(movieEl);
+
+        document.getElementById(id).addEventListener('click', () => {
+            console.log(id)
+            openNav(movie)
+        })
     });
 }
+const overlayContent = document.getElementById("overlay-content");
+function openNav(movie) {
+    let id = movie.id;
+    fetch(BASE_URL + '/movie/' + id + '/videos?' + `api_key=${API_KEY}${language}`)
+        .then(res => res.json())
+        .then(videoData => {
+            console.log(videoData);
+            document.getElementById("myNav").style.width = "100%";
 
+            if (videoData && videoData.results.length > 0) {
+                const youtubeVideo = videoData.results.find(video => video.site === 'YouTube');
+
+                if (youtubeVideo) {
+                    const { name, key } = youtubeVideo;
+                    const embed = `
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/${key}" title="${name}" class="embed hide" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    `;
+                    overlayContent.innerHTML = embed;
+                } else {
+                    overlayContent.innerHTML = `<h1 class="no-results">Nenhum trailer do YouTube encontrado</h1>`;
+                }
+            } else {
+                overlayContent.innerHTML = `<div class="no-result">
+                <img src="img/filmes/pililiu.png" alt="image" class="img-no-results" style="width: 450px; height: 250px;">
+                <br>
+                <h1 class="no-results"style="color=white;";>Nenhum resultado encontrado!</h1>
+                </div>`;
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching trailer data:', error);
+            overlayContent.innerHTML = `<h1 class="no-results">Erro ao buscar informações do trailer</h1>`;
+        });
+}
+
+
+function closeNav() {
+    document.getElementById("myNav").style.width = "0%";
+}
 
 function getColor(vote) {
     if (vote >= 8) {
